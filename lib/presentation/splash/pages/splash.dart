@@ -1,4 +1,5 @@
 import 'package:eazy_quizy/common/helper/navigator/app_navigator.dart';
+import 'package:eazy_quizy/core/configs/assets/app_images.dart';
 import 'package:eazy_quizy/core/configs/assets/app_vectors.dart';
 import 'package:eazy_quizy/core/configs/theme/app_colors.dart';
 import 'package:eazy_quizy/presentation/auth/pages/signin.dart';
@@ -23,10 +24,13 @@ class SplashPage extends StatelessWidget {
           AppNavigator.pushReplacement(context, const Home());
         }
       },
-      child: Scaffold(
+      child: const Scaffold(
         backgroundColor: AppColors.background,
         body: Center(
-          child: SvgPicture.asset(AppVectors.appLogo),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 40),
+            child: Image(image: AssetImage(AppImages.appLogo)),
+          ),
         ),
       ),
     );

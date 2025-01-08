@@ -8,11 +8,13 @@ class BasicReactiveButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String title;
   final double? height;
+  final double? width;
   final Widget? content;
   const BasicReactiveButton(
       {required this.onPressed,
       this.title = '',
       this.height,
+      this.width,
       this.content,
       super.key});
 
@@ -34,7 +36,8 @@ class BasicReactiveButton extends StatelessWidget {
           minimumSize: Size.fromHeight(height ?? 50),
         ),
         child: Container(
-            height: height ?? 50,
+            height: height ?? 25,
+            width: width ?? 25,
             alignment: Alignment.center,
             child: const CircularProgressIndicator()));
   }

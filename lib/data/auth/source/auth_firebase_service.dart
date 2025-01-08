@@ -69,7 +69,7 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
       String message = '';
 
       if (e.code == 'invalid-email') {
-        message = 'Not user found for this email';
+        message = 'No user found';
       } else if (e.code == 'invalid-credential') {
         message = 'Wrong password provided for this user';
       }

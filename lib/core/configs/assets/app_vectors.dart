@@ -1,5 +1,5 @@
 class AppVectors {
-  static const basePath = 'assets/vectors/';
+  static const basePath = 'vectors/';
   static const format = '.svg';
   static const appLogo = '${basePath}logo$format';
   static const emailSending = '${basePath}email_sending$format';
