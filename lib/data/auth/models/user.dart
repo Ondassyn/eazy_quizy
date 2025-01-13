@@ -7,18 +7,20 @@ class UserModel {
   final String userId;
   // final String firstName;
   // final String lastName;
-  final String username;
+  final String? username;
   final String email;
-  final String image;
+  final String? image;
+  final String role;
   // final int gender;
 
   UserModel({
     required this.userId,
     // required this.firstName,
     // required this.lastName,
-    required this.username,
+    this.username,
     required this.email,
-    required this.image,
+    this.image,
+    required this.role,
     // required this.gender
   });
 
@@ -30,6 +32,7 @@ class UserModel {
       'username': username,
       'email': email,
       'image': image,
+      'role': role,
       // 'gender': gender,
     };
   }
@@ -42,6 +45,7 @@ class UserModel {
       username: map['username'] as String,
       email: map['email'] as String,
       image: map['image'] ?? '',
+      role: map['role'] ?? '',
       // gender: map['gender'] as int,
     );
   }
@@ -61,6 +65,7 @@ extension UserXModel on UserModel {
       username: username,
       email: email,
       image: image,
+      role: role,
       // gender: gender
     );
   }
