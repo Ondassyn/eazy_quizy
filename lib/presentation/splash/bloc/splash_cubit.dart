@@ -1,5 +1,3 @@
-import 'package:eazy_quizy/domain/auth/entity/user.dart';
-import 'package:eazy_quizy/domain/auth/usecases/get_user.dart';
 import 'package:eazy_quizy/domain/auth/usecases/is_logged_in.dart';
 import 'package:eazy_quizy/presentation/splash/bloc/splash_state.dart';
 import 'package:eazy_quizy/service_locator.dart';
@@ -13,14 +11,7 @@ class SplashCubit extends Cubit<SplashState> {
     var isLoggedIn = await sl<IsLoggedInUseCase>().call();
 
     if (isLoggedIn) {
-      print('HHHHHHHHHHHHHHHHHHH');
-      var user = await sl<GetUserUseCase>().call();
-      print('HOST: $user');
-      if (user == 'Host') {
-        emit(IsHost());
-      } else {
-        emit(Authenticated());
-      }
+      emit(Authenticated());
     } else {
       emit(UnAuthenticated());
     }

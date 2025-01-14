@@ -1,5 +1,7 @@
 import 'package:eazy_quizy/data/auth/repository/auth_repository_impl.dart';
 import 'package:eazy_quizy/data/auth/source/auth_firebase_service.dart';
+import 'package:eazy_quizy/data/game/repository/game.dart';
+import 'package:eazy_quizy/data/game/source/game_firebase_service.dart';
 import 'package:eazy_quizy/data/message/repository/message.dart';
 import 'package:eazy_quizy/data/message/source/message_firebase_service.dart';
 import 'package:eazy_quizy/domain/auth/repository/auth.dart';
@@ -9,6 +11,8 @@ import 'package:eazy_quizy/domain/auth/usecases/is_logged_in.dart';
 import 'package:eazy_quizy/domain/auth/usecases/send_password_reset_email.dart';
 import 'package:eazy_quizy/domain/auth/usecases/signin.dart';
 import 'package:eazy_quizy/domain/auth/usecases/signup.dart';
+import 'package:eazy_quizy/domain/game/repository/game.dart';
+import 'package:eazy_quizy/domain/game/usecases/get_games.dart';
 import 'package:eazy_quizy/domain/message/repository/message.dart';
 import 'package:eazy_quizy/domain/message/usecases/get_messages.dart';
 import 'package:eazy_quizy/domain/message/usecases/push_message.dart';
@@ -20,7 +24,7 @@ Future<void> initializeDependencies() async {
   // Services
 
   sl.registerSingleton<AuthFirebaseService>(AuthFirebaseServiceImpl());
-
+  sl.registerSingleton<GameFirebaseService>(GameFirebaseServiceImpl());
   sl.registerSingleton<MessageFirebaseService>(MessageFirebaseServiceImpl());
 
   // Repositories
@@ -28,6 +32,7 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<AuthRepository>(AuthRepositoryImpl());
 
   sl.registerSingleton<MessageRepository>(MessageRepositoryImpl());
+  sl.registerSingleton<GameRepository>(GameRepositoryImpl());
 
   // Usecases
 
@@ -46,4 +51,6 @@ Future<void> initializeDependencies() async {
 
   sl.registerSingleton<GetMessagesUseCase>(GetMessagesUseCase());
   sl.registerSingleton<PushMessageUseCase>(PushMessageUseCase());
+
+  sl.registerSingleton<GetGamesUseCase>(GetGamesUseCase());
 }

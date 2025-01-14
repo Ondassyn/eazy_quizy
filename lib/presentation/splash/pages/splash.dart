@@ -4,9 +4,11 @@ import 'package:eazy_quizy/core/configs/assets/app_vectors.dart';
 import 'package:eazy_quizy/core/configs/theme/app_colors.dart';
 import 'package:eazy_quizy/presentation/auth/pages/signin.dart';
 import 'package:eazy_quizy/presentation/home/pages/home.dart';
+import 'package:eazy_quizy/presentation/home/pages/home_dispatcher.dart';
 import 'package:eazy_quizy/presentation/home/pages/host_home.dart';
 import 'package:eazy_quizy/presentation/splash/bloc/splash_cubit.dart';
 import 'package:eazy_quizy/presentation/splash/bloc/splash_state.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,11 +23,8 @@ class SplashPage extends StatelessWidget {
         if (state is UnAuthenticated) {
           AppNavigator.pushReplacement(context, SigninPage());
         }
-        if (state is IsHost) {
-          AppNavigator.pushReplacement(context, const HostHome());
-        }
         if (state is Authenticated) {
-          AppNavigator.pushReplacement(context, const Home());
+          AppNavigator.pushReplacement(context, const HomeDispatcher());
         }
       },
       child: const Scaffold(

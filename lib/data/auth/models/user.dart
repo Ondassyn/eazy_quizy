@@ -4,49 +4,37 @@ import 'dart:convert';
 import 'package:eazy_quizy/domain/auth/entity/user.dart';
 
 class UserModel {
-  final String userId;
-  // final String firstName;
-  // final String lastName;
+  final String uid;
   final String? username;
   final String email;
   final String? image;
   final String role;
-  // final int gender;
 
   UserModel({
-    required this.userId,
-    // required this.firstName,
-    // required this.lastName,
+    required this.uid,
     this.username,
     required this.email,
     this.image,
     required this.role,
-    // required this.gender
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'userId': userId,
-      // 'firstName': firstName,
-      // 'lastName': lastName,
+      'uid': uid,
       'username': username,
       'email': email,
       'image': image,
       'role': role,
-      // 'gender': gender,
     };
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      userId: map['userId'] as String,
-      // firstName: map['firstName'] as String,
-      // lastName: map['lastName'] as String,
-      username: map['username'] as String,
+      uid: map['uid'] as String,
+      username: map['username'] != null ? map['username'] as String : null,
       email: map['email'] as String,
-      image: map['image'] ?? '',
-      role: map['role'] ?? '',
-      // gender: map['gender'] as int,
+      image: map['image'] != null ? map['image'] as String : null,
+      role: map['role'] as String,
     );
   }
 
@@ -59,14 +47,11 @@ class UserModel {
 extension UserXModel on UserModel {
   UserEntity toEntity() {
     return UserEntity(
-      userId: userId,
-      // firstName: firstName,
-      // lastName: lastName,
+      uid: uid,
       username: username,
       email: email,
       image: image,
       role: role,
-      // gender: gender
     );
   }
 }
