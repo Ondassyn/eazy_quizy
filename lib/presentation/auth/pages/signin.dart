@@ -10,6 +10,7 @@ import 'package:eazy_quizy/domain/auth/usecases/signin.dart';
 import 'package:eazy_quizy/presentation/auth/pages/enter_password.dart';
 import 'package:eazy_quizy/presentation/auth/pages/signup.dart';
 import 'package:eazy_quizy/presentation/home/pages/home.dart';
+import 'package:eazy_quizy/presentation/home/pages/home_dispatcher.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,7 +46,7 @@ class SigninPage extends StatelessWidget {
                   }
 
                   if (state is ButtonSuccessState) {
-                    AppNavigator.pushAndRemove(context, const Home());
+                    AppNavigator.pushAndRemove(context, const HomeDispatcher());
                   }
                 },
                 child: Column(

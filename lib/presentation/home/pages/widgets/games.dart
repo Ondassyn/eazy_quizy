@@ -22,7 +22,8 @@ class Games extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                _games(state.games)
+                _games(state.games),
+                _createGame(context),
               ],
             );
           }
@@ -70,4 +71,35 @@ class Games extends StatelessWidget {
           itemCount: games.length),
     );
   }
+}
+
+Widget _createGame(BuildContext context) {
+  return Center(
+    child: ElevatedButton(
+      child: const Text('+ Create game'),
+      onPressed: () {
+        showModalBottomSheet<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return SizedBox(
+              height: 200,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    const Text('Modal BottomSheet'),
+                    ElevatedButton(
+                      child: const Text('Close BottomSheet'),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    ),
+  );
 }
